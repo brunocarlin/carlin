@@ -1,0 +1,18 @@
+name: "carlin"
+title: "Bruno Testaguzza Carlin blog"
+description: |
+  The third version of my personal blog
+output_dir: "_site"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - icon: fa fa-rss
+      href: index.xml
+collections:
+  posts:
+    share: [twitter, linkedin]
+base_url: https://twosidesdata.netlify.app/
+output: distill::distill_article

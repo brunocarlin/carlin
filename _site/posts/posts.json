@@ -1,0 +1,21 @@
+[
+  {
+    "path": "posts/2022-02-27-welcome/",
+    "title": "welcome",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Bruno Testaguzza Carlin",
+        "url": "https://twosidesdata.netlify.app/"
+      }
+    ],
+    "date": "2022-02-27",
+    "categories": [],
+    "contents": "\r\nDistill is a publication format for scientific and technical writing,\r\nnative to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2022-02-27-welcome/welcome_files/figure-html5/jjj-1.png",
+    "last_modified": "2022-02-27T20:46:25-03:00",
+    "input_file": {},
+    "preview_width": 1248,
+    "preview_height": 768
+  }
+]
