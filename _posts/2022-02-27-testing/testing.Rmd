@@ -53,3 +53,15 @@ data <- c(1:100)
 plot(data)
 ```
 
+
+
+# Testing Diffs
+
+
+```{r}
+data <- c(1:200)
+```
+
+```{r plot_1_to_200}
+plot(data)
+```
