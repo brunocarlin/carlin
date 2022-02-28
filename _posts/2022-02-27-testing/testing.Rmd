@@ -1,0 +1,53 @@
+---
+title: "testing"
+description: |
+  A short description of the post.
+author:
+  - name: Bruno Testaguzza Carlin
+    url: https://twosidesdata.netlify.app/
+date: 2022-02-27
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_float: true
+    keep_md: true
+---
+
+
+# Inital Data
+
+
+
+```{r , code_folding='Show my code'}
+data <- c(1:20)
+```
+
+```{r plot_1_to_20}
+plot(data)
+```
+
+
+## Testing Sub
+
+
+```{r}
+data <- c(1:50)
+```
+
+```{r plot_1_to_50}
+plot(data)
+```
+
+
+# Hopefully it works
+
+
+```{r}
+data <- c(1:100)
+```
+
+```{r plot_1_to_100}
+plot(data)
+```
+
