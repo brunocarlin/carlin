@@ -6,20 +6,20 @@
       "description": "Some additional details about the blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-02-28T17:06:29+00:00"
+      "last_modified": "2022-02-28T17:13:34+00:00"
     },
     {
       "path": "index.html",
       "title": "Bruno Testaguzza Carlin blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-02-28T17:06:30+00:00"
+      "last_modified": "2022-02-28T17:13:34+00:00"
     },
     {
       "path": "README.html",
       "author": [],
       "contents": "\ncarlin\n\nPersonal Blog of Bruno Testaguzza Carlin\n\n\n",
-      "last_modified": "2022-02-28T17:06:30+00:00"
+      "last_modified": "2022-02-28T17:13:34+00:00"
     }
   ],
   "collections": ["posts/posts.json"]

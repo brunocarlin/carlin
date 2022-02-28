@@ -13,7 +13,7 @@
     "categories": [],
     "contents": "\n\nContents\nInital Data\nTesting Sub\n\nHopefully it works\n\nInital Data\n\n\nShow my code\n\ndata <- c(1:20)\n\n\n\n\n\nplot(data)\n\n\n\n\nTesting Sub\n\n\ndata <- c(1:50)\n\n\n\n\n\nplot(data)\n\n\n\n\nHopefully it works\n\n\ndata <- c(1:100)\n\n\n\n\n\nplot(data)\n\n\n\n\n\n\n\n",
     "preview": "https://rstudio.github.io/distill/images/javascript-d3-preview.png",
-    "last_modified": "2022-02-28T17:04:51+00:00",
+    "last_modified": "2022-02-28T17:12:09+00:00",
     "input_file": {}
   },
   {
@@ -30,7 +30,7 @@
     "categories": [],
     "contents": "\nDistill is a publication format for scientific and technical writing,\nnative to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n\n\n\n",
     "preview": "posts/2022-02-27-welcome/welcome_files/figure-html5/jjj-1.png",
-    "last_modified": "2022-02-28T17:04:51+00:00",
+    "last_modified": "2022-02-28T17:12:09+00:00",
     "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
