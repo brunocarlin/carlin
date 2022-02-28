@@ -13,6 +13,9 @@ navbar:
       href: index.xml
 collections:
   posts:
-    share: [twitter, linkedin]
+    share: [twitter, linkedin, pinterest, facebook]
+twitter:
+  site: "@BrunoTestaguzza"
+  creator: "@BrunoTestaguzza"
 base_url: https://carlin-blog.netlify.app/
 output: distill::distill_article
