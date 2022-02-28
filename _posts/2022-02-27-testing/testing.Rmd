@@ -5,6 +5,7 @@ description: |
 author:
   - name: Bruno Testaguzza Carlin
     url: https://twosidesdata.netlify.app/
+preview: https://rstudio.github.io/distill/images/javascript-d3-preview.png
 date: 2022-02-27
 output:
   distill::distill_article:
@@ -12,7 +13,6 @@ output:
     self_contained: true
     toc: true
     toc_float: true
-    preview: https://rstudio.github.io/distill/images/javascript-d3-preview.png
 ---
 
 
