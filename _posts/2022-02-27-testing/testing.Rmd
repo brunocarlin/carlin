@@ -9,11 +9,10 @@ date: 2022-02-27
 output:
   distill::distill_article:
     keep_md: true
-    self_contained: false
+    self_contained: true
     toc: true
     toc_float: true
-    includes:
-      in_header: ../../gtag.js
+    
 ---
 
 
