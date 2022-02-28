@@ -12,6 +12,8 @@ output:
     toc: true
     toc_float: true
     keep_md: true
+    includes:
+      in_header: ../../gtag.js
 ---
 
 
