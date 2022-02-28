@@ -6,14 +6,14 @@
       "description": "Some additional details about the blog",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-02-27T21:37:53-03:00"
+      "last_modified": "2022-02-27T22:59:20-03:00"
     },
     {
       "path": "index.html",
       "title": "Bruno Testaguzza Carlin blog",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-02-27T21:37:53-03:00"
+      "last_modified": "2022-02-27T22:59:21-03:00"
     }
   ],
   "collections": ["posts/posts.json"]
