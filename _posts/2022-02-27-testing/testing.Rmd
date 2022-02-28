@@ -12,7 +12,7 @@ output:
     self_contained: true
     toc: true
     toc_float: true
-    
+    preview: https://rstudio.github.io/distill/images/javascript-d3-preview.png
 ---
 
 

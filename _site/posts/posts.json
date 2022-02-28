@@ -13,7 +13,7 @@
     "categories": [],
     "contents": "\r\n\r\nContents\r\nInital Data\r\nTesting Sub\r\n\r\nHopefully it works\r\n\r\nInital Data\r\n\r\n\r\nShow my code\r\n\r\ndata <- c(1:20)\r\n\r\n\r\n\r\n\r\n\r\nplot(data)\r\n\r\n\r\n\r\n\r\nTesting Sub\r\n\r\n\r\ndata <- c(1:50)\r\n\r\n\r\n\r\n\r\n\r\nplot(data)\r\n\r\n\r\n\r\n\r\nHopefully it works\r\n\r\n\r\ndata <- c(1:100)\r\n\r\n\r\n\r\n\r\n\r\nplot(data)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2022-02-28T00:28:59-03:00",
+    "last_modified": "2022-02-28T00:32:56-03:00",
     "input_file": "testing.knit.md"
   },
   {
