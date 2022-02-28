@@ -6,14 +6,22 @@
       "description": "Some additional details about the blog",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
+<<<<<<< HEAD
       "last_modified": "2022-02-27T23:06:47-03:00"
+=======
+      "last_modified": "2022-02-27T20:54:01-03:00"
+>>>>>>> parent of 29d87a2 (first fake post)
     },
     {
       "path": "index.html",
       "title": "Bruno Testaguzza Carlin blog",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
+<<<<<<< HEAD
       "last_modified": "2022-02-27T23:06:48-03:00"
+=======
+      "last_modified": "2022-02-27T20:54:02-03:00"
+>>>>>>> parent of 29d87a2 (first fake post)
     }
   ],
   "collections": ["posts/posts.json"]

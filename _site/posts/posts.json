@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "path": "posts/2022-02-27-testing/",
     "title": "testing",
     "description": "A short description of the post.",
@@ -17,6 +18,8 @@
     "input_file": {}
   },
   {
+=======
+>>>>>>> parent of 29d87a2 (first fake post)
     "path": "posts/2022-02-27-welcome/",
     "title": "welcome",
     "description": "A short description of the post.",
@@ -30,7 +33,11 @@
     "categories": [],
     "contents": "\r\nDistill is a publication format for scientific and technical writing,\r\nnative to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2022-02-27-welcome/welcome_files/figure-html5/jjj-1.png",
+<<<<<<< HEAD
     "last_modified": "2022-02-27T23:04:22-03:00",
+=======
+    "last_modified": "2022-02-27T20:46:25-03:00",
+>>>>>>> parent of 29d87a2 (first fake post)
     "input_file": {},
     "preview_width": 1248,
     "preview_height": 768
