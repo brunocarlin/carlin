@@ -8,20 +8,17 @@ name: Render & Deploy Site
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout
 
-      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-pandoc
 
-      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-r
+        with:
+          use-public-rspm: true
 
-      - name: Install dependencies
-        run: |
-          install.packages("rmarkdown")
-          install.packages("distill")
-          install.packages("postcards")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-renv
 
       - name: Render Site
         run: Rscript -e 'rmarkdown::render_site(encoding = "UTF-8")'
