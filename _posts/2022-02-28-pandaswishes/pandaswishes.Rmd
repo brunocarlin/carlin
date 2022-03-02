@@ -2,6 +2,12 @@
 title: "pandas Wishes"
 description: |
   Features that I miss in pandas coming from the tidyverse.
+categories:
+  - pandas
+  - tidyverse
+  - Spark
+  - Python
+  - R
 author:
   - name: Bruno Testaguzza Carlin
     url: https://twosidesdata.netlify.app/
