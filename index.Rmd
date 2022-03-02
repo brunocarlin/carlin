@@ -29,7 +29,7 @@ metathis::meta() %>%
     og_author = "Bruno Testaguzza Carlin",
     twitter_card_type = "summary",
     twitter_creator = "@brunotestaguzza"
-  )`
+)
 ```
 
 
