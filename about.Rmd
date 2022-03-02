@@ -1,8 +1,13 @@
 ---
 title: "About this blog"
 description: |
-  Some additional details about the blog
+  The blog started on February 2022
 ---
+
+I also have another personal website at [TwoSidesData](https://twosidesdata.netlify.app/) 
+
+If you want to reach out please message me on [linkedin](https://www.linkedin.com/in/bruno-carlin/) or [twitter](https://twitter.com/brunotestaguzza)
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)

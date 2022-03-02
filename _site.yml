@@ -9,10 +9,14 @@ navbar:
     image: data/images/gato.jpg
     href: https://carlin-blog.netlify.app
   right:
-    - text: "Home"
+    - icon: fa-home
       href: index.html
+    - text: "Blog"
+      href: blog.html
     - text: "About"
       href: about.html
+    - icon: fa fa-linkedin
+      href: https://www.linkedin.com/in/bruno-carlin/
     - icon: fa fa-rss
       href: index.xml
     - icon: fa-brands fa-github

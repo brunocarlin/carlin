@@ -1,5 +1,5 @@
 ---
-title: "Welcomo to Bruno Testaguzza Carlin blog"
+title: "Welcome to Bruno Testaguzza Carlin blog"
 image: "data/images/gato.jpg"
 links:
   - label: '<i class="fab fa-github fa-1x"></i>'

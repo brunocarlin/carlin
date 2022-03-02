@@ -3,23 +3,23 @@
     {
       "path": "about.html",
       "title": "About this blog",
-      "description": "Some additional details about the blog",
+      "description": "The blog started on February 2022",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2022-03-02T01:14:53+00:00"
+      "contents": "\r\nI also have another personal website at TwoSidesData\r\nIf you want to reach out please message me on linkedin or twitter\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-03-02T11:27:27-03:00"
     },
     {
       "path": "index.html",
       "title": "Welcomo to Bruno Testaguzza Carlin blog",
       "author": [],
-      "contents": "\nHi - I’m Bruno Testaguzza Carlin. I currently wort at Recovery as a Data Science Specialist.\nThis is my third personal website/blog which contains discussions on topics related to Data Science.\nPlease browse around, and feel free to leave a comment.\n\n\n\n",
-      "last_modified": "2022-03-02T01:14:54+00:00"
+      "contents": "\r\nHi - I’m Bruno Testaguzza Carlin. I currently wort at Recovery as a Data Science Specialist.\r\nThis is my third personal website/blog which contains discussions on topics related to Data Science.\r\nPlease browse around, and feel free to leave a comment.\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-03-01T22:28:19-03:00"
     },
     {
       "path": "README.html",
       "author": [],
-      "contents": "\ncarlin\n\nPersonal Blog of Bruno Testaguzza Carlin\n\n\n",
-      "last_modified": "2022-03-02T01:14:56+00:00"
+      "contents": "\r\ncarlin\r\n\r\nPersonal Blog of Bruno Testaguzza Carlin\r\n\r\n\r\n",
+      "last_modified": "2022-03-02T11:27:27-03:00"
     }
   ],
   "collections": ["posts/posts.json"]
