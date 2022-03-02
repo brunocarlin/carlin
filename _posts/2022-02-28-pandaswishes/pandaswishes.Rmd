@@ -1,0 +1,512 @@
+---
+title: "pandas Wishes"
+description: |
+  Features that I miss in pandas coming from the tidyverse.
+author:
+  - name: Bruno Testaguzza Carlin
+    url: https://twosidesdata.netlify.app/
+preview: https://rstudio.github.io/distill/images/javascript-d3-preview.png
+css: ../../css/hover.css
+date: 2022-02-28
+output:
+  distill::distill_article:
+    keep_md: true
+    toc: true
+    toc_float: true
+---
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(echo = FALSE)
+knitr::knit_engines$set(python = reticulate::eng_python)
+```
+
+
+
+# Setup
+
+
+## Link to the GitHub source code
+
+```{r echo=FALSE}
+downloadthis::download_link(
+  link = "https://github.com/brunocarlin/carlin/blob/main/_posts/2022-02-28-pandaswishes/pandaswishes.Rmd",
+  button_label = "See the source rmd file",
+  has_icon = TRUE,
+  icon = "fa fa-github",
+  self_contained = FALSE
+)
+```
+
+## Libraries in R
+
+```{r}
+library(tidyverse)
+library(data.table)
+```
+
+
+## Libraries in Python
+
+```{python}
+import pandas as pd
+import numpy as np
+```
+
+## The Data: Penguins!
+
+[Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package
+  version 0.1.0. https://allisonhorst.github.io/palmerpenguins/](https://github.com/allisonhorst/palmerpenguins/)
+
+I choose the Palmer Penguins Dataset. Some call it the new iris after the iris dataset was rightly criticized for Eugenics issues. You can read more about it here [Iris dataset retirement](https://armchairecology.blog/iris-dataset/).
+
+### What does the dataset look like? 
+
+```{r}
+penguins <- palmerpenguins::penguins
+
+head(penguins)
+glimpse(penguins,width = 50)
+
+
+```
+
+The dataset consists of 344 samples of three species of Penguins.
+
+### How do they look like?
+
+The three species have different characteristics.
+
+![Artwork by @allison_horst](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/lter_penguins.png)
+
+And what the hell is Bill Lenght and Depth?
+
+![Artwork by @allison_horst](https://github.com/allisonhorst/palmerpenguins/raw/master/man/figures/culmen_depth.png)
+
+### Interaction among variables and species
+
+[Credit to Allison once again](https://allisonhorst.github.io/palmerpenguins/articles/examples.html)
+
+#### Penguin mass vs. flipper length
+
+```{r mass_vs_flipper_lenght, echo=FALSE}
+mass_flipper <- ggplot(data = penguins, 
+                       aes(x = flipper_length_mm,
+                           y = body_mass_g)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 3,
+             alpha = 0.8) +
+  theme_minimal() +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(title = "Penguin size, Palmer Station LTER",
+       subtitle = "Flipper length and body mass for Adelie, Chinstrap and Gentoo Penguins",
+       x = "Flipper length (mm)",
+       y = "Body mass (g)",
+       color = "Penguin species",
+       shape = "Penguin species") +
+  theme(legend.position = c(0.2, 0.7),
+        legend.background = element_rect(fill = "white", color = NA),
+        plot.title.position = "plot",
+        plot.caption = element_text(hjust = 0, face= "italic"),
+        plot.caption.position = "plot")
+mass_flipper
+```
+
+As expected from the picture, the Gento species is a bit bigger, and we can see a heavy correlation between Flipper length and weight.
+
+#### Bill length vs. depth
+
+```{r bill_lenght_vs_depth, echo=FALSE}
+bill_len_dep <- ggplot(data = penguins,
+                         aes(x = bill_length_mm,
+                             y = bill_depth_mm,
+                             group = species)) +
+  geom_point(aes(color = species,
+                 shape = species),
+             size = 3,
+             alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+  theme_minimal() +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(title = "Penguin bill dimensions",
+       subtitle = "Bill length and depth for Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER",
+       x = "Bill length (mm)",
+       y = "Bill depth (mm)",
+       color = "Penguin species",
+       shape = "Penguin species") +
+  theme(legend.position = c(0.85, 0.15),
+        legend.background = element_rect(fill = "white", color = NA),
+        plot.title.position = "plot",
+        plot.caption = element_text(hjust = 0, face= "italic"),
+        plot.caption.position = "plot")
+
+bill_len_dep
+#> `geom_smooth()` using formula 'y ~ x'
+#> Warning: Removed 2 rows containing non-finite values (stat_smooth).
+#> Warning: Removed 2 rows containing missing values (geom_point).
+```
+
+As we saw in the picture, the Adelie has smaller-length Bills.  
+The Gentoo has much more elongated ones than the Adelie, but they look 'flatter,' or as the dataset calls it, they have a smaller Bill depth.
+The Chinstrap are positioned on the bigger side of both metrics.
+
+#### Impact of sex on size
+
+
+```{r sex_vs_size, echo = FALSE}
+ggplot(penguins, aes(x = flipper_length_mm,
+                            y = body_mass_g)) +
+  geom_point(aes(color = sex)) +
+  theme_minimal() +
+  scale_color_manual(values = c("darkorange","cyan4"), na.translate = FALSE) +
+  labs(title = "Penguin flipper and body mass",
+       subtitle = "Dimensions for male and female Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER",
+       x = "Flipper length (mm)",
+       y = "Body mass (g)",
+       color = "Penguin sex") +
+  theme(legend.position = "bottom",
+        legend.background = element_rect(fill = "white", color = NA),
+        plot.title.position = "plot",
+        plot.caption = element_text(hjust = 0, face= "italic"),
+        plot.caption.position = "plot") +
+  facet_wrap(~species)
+```
+
+# My experience
+
+At this point I have worked more than 4 years with both Python and R, Python has been my language choice when interacting with colleges simply because of culture or better support in platforms such as AWS, but it is important to understand that R was my first data language (I dabbled in some Macros on excel before) and I have used it since graduation more than 7 years ago.
+
+
+# The tasks of pandas framework?
+
+Firstly, I call it a framework because pandas comes bundled with NumPy and other friends like matplot or seaborn. It is fair to compare them as a bundle since the competition is also split among many packages. I will borrow a picture from the tidyverse to explain where pandas stands on the analysis workflow.
+
+![Credit tohttps://oliviergimenez.github.io/](https://oliviergimenez.github.io/intro_tidyverse/assets/img/data-science-workflow.png)
+
+pandas Is responsible for the Import -> Tidy -> Transform part
+
+But it can sometimes reach a little bit into Visualize by delegating when necessary. If your communication task is a graph, you can use matplot or seaborn, and there are also some simple APIs inside pandas that can plot basic graphs.   
+
+
+If you are importing from parquet, sometimes pandas calls on the arrow package.  
+
+
+There are many other examples, but I think of pandas as this central player on the data workflow of the Python ecosystem, it is unmatched in its amount of methods, and therefore it should be expected that some things could use some improvement, and that is the point of this post, I want pandas to change for the better, I want to discuss why pandas is in this state of right now and what I would like to see instead.
+
+# The current landscape
+
+In R, I have used three different frameworks when dealing with data that can be considered a problem. Still, there is a crucial difference when comparing Python and R, you will usually find competition inside R, and it happens on every sphere, modeling has the tidymodels vs. mlr fight, visualization has plotly vs. ggplot2, statistical tests sometimes have tens of different implementations from all over the world, etc. As an economist, I see this competition with good eyes. The competition has fostered fast and tested change on multiple instances as competing 
+## The timeline
+
+First there was Base R created on August 1993; 28 years ago according to Wikipedia, but with many more years of baggage from the S era. 
+Then pandas starts development around 2005 and gets open sourced on 2008, it is a game changer and vastly more declarative and faster than Base R.
+data.table comes along on the premise of speed matters a lot, remember that it is 2006 and the single big machine paradigm was the end all for big data analysis, maybe it wasn't even called big data back then. 
+the tidyverse releases dplyr on the back of the huge success of ggplot2, it wasn't even called the tidyverse back then.
+And finally Koalas get created on 2019 to help pandas scale with PySpark, it eventually get incorporated back into PySpark as the pyspark.pandas api.
+
+
+## Base R
+
+![](https://cdn.vox-cdn.com/thumbor/MpA2HVftSFntl9HhmhlQA3MEjIU=/0x0:1409x785/1200x800/filters:focal(622x252:846x476)/cdn.vox-cdn.com/uploads/chorus_image/image/55701647/Screen_Shot_2017_07_13_at_1.09.20_PM.0.png)
+
+The oldest, most of the time slowest way, base R has scared so many away from r. You will see some nasty behaviors here, like the famous partial string matching or the very crypt function names and arguments. Base R feels dated because it is dated, now more than 20 years old, this framework inspired pandas, but you need some patience if you are using it. There is an excellent book about all of Base R's little details that I highly recommend called [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf)
+
+Base r implement some design ideas that users of the pandas ecosystem will recognize, like the dreadful row names pandas turned into indexes and using square brackets for 2d manipulation of data.
+
+Some details of R for the Python folks, R doesn't expect you to know what a pointer is because R doesn't expect you to be a regular programmer. Base R envisions a statistician with some thousand lines of beautiful math that got turned into a package. This means that if you assign a copy of a data.frame to a new name, R initially creates a pointer, and eventually, if you have changed it in a destructible way, R automatically copies it into another new object. There is no need to keep manually using the copy method as in pandas.
+
+### Data Prep
+
+```{r, layout="l-body-outset"}
+penguins_base <- penguins |> as.data.frame()
+row.names(penguins_base) <- str_c('penguin_',row_number(penguins_base$species))
+
+head(penguins_base) |> knitr::kable()
+```
+
+### Slicing
+
+Now let's use some base R
+
+You can filter in a 2d manner based on df[x,y] just like pandas .loc
+
+```{r}
+penguins_base['penguin_1',]
+```
+
+```{r}
+penguins_base[c('penguin_1','penguin_10'),c('species','island')]
+```
+
+It even feels like pandas all the way into it randomly deciding to change my data types.
+
+```{r}
+penguins_base[c('penguin_1','penguin_10'),c('species')]
+
+```
+
+Yep, we just fell out of a data.frame straight into a vector of the factor class, fantastic.
+
+### Complex manipulation
+
+Let's try to get the mean of the kgs of the females by species.
+
+
+Doing some complex calculations on base R feels like a chore, but some functions that work as an apply on steroids may usually.
+
+You will also rely heavily on saving intermediary df's unless you overwrite the original, or you cheat a little bit and use pipes from the tidyverse (I don't even think of it as cheating anymore as pipes come natively with R since the  4.0 release), as I will explain the tidyverse is a superset of base, meaning that it can be used inside of the Base R workflow. It can borrow functions from base as well. Some may call this a modern Base R code as it would not run on earlier than 4.0 versions of R. This also enables shorter anonymous functions using '\' instead of 'function'.
+
+
+
+```{r}
+results_base <- penguins_base[penguins_base['sex'] == 'female',] |>
+  with(aggregate(x =body_mass_g,by = list(species),FUN = \(x) mean(x)/1000))
+
+results_base
+```
+
+Nice looking table, It is hell to use multiple functions, but if you know what you are doing is simple, Base R gets the job done with no imports... if you still care about that.
+
+## data.table
+
+The motto here is gotta go fast![](https://memegenerator.net/img/instances/65946828.jpg)
+
+
+Going as far as naturally parallelize execution on local cores when possible, some love the syntax, I honestly think it is the worst out of all the options, but when speed on a single machine is relevant (something that I encounter less and less as we will discuss later) data.table really shines, outperforming just about anything I have ever used on Python and R.
+
+### Data Prep
+
+```{r}
+penguins_data_table <- as.data.table(penguins)
+```
+
+
+### Complex manipulation
+
+```{r}
+penguins_data_table[,list(species,body_mass_g)]
+
+
+penguins_data_table[species %in% c('Adelie','Gentoo') & sex == 'female',list(species,body_mass_g)][,lapply(.SD,mean,na.rm = TRUE),species]
+```
+
+It produces these magical one-liners with speed to spare. The problem is that I can barely glimpse what I did here, as almost all of the execution depends on you remembering this model behind the scenes.
+
+DT[i, j, by]  
+
+  i = order by | select  
+  j = update  
+  by = group by  
+
+And trust me when I say it gets complicated data.table is Turing complete as all options here are, and it is out there performing all of the functions of either dplyr or pandas, with just three arguments! That produces some of the most confusing pieces of code you will ever read, at least the data.table team killed the idea of row names as well.
+
+
+## Dplyr / the tidyverse
+
+![Storybench picture of the tidyverse](https://www.storybench.org/wp-content/uploads/2017/05/tidyverse-730x294.png)
+
+My clear favorite, in a perfect world, everyone should know the tidyverse for the power it brings on expressing ideas about data with straightforward declarative syntax. This is very much the empowered version of SQL. A nice thing that I already showed on the base R part is that the tidyverse is only a part of the R ecosystem, meaning you can get your old statistic operations and just plug it into place. I will further detail how easy it is to develop an extension for the tidyverse but first, let's see some syntax.
+
+### Simple Manipulation
+
+
+```{r}
+penguins |>
+  filter(species %in% c('Adelie', 'Gentoo'),
+         sex == 'female') |> 
+  group_by(species) |> 
+  summarise(body_mass_g_to_kg = mean(body_mass_g)/1000)
+```
+
+This is an example of what dplyr can do while remaining very similar to English, you can opt into named arguments that are very well thought out, some of which have gone into twitter polls, the team at RStudio clearly thinks about usage and is willing to redesign old parts of the systems to reach new usability levels.
+
+### Complex Manipulation
+
+```{r}
+result_tidyverse <- penguins |>
+  select(-year) |>
+  filter(species %in% c('Adelie', 'Gentoo'),
+         sex == 'female') |>
+  group_by(species) |>
+  select(where(is.numeric)) |>
+  summarise(across(
+    .cols = where(\(x) mean(x) > 188),
+    .fns = list(median = median, mean = mean),
+    .names = "{.fn}-{.col}"
+  )) |>
+  mutate(across(
+    .cols = ends_with('_g'),
+    .fns = list(to_kg = \(x) x / 1000),
+    .names = "{.col}-{.fn}"
+  ))
+
+result_tidyverse |> rmarkdown::paged_table()
+```
+
+
+This is incredibly similar to my usage of data manipulation in the real world. Some functions are simple, like some business metric is better on a kg basis instead of g, while others empower you to write incredibly succinct syntax that feels like a superpower for your laziness. You start to write smaller and smaller code to deal with more and more complex problems. I realize that most of what is in here exists solely on the tidyverse (for now) and that newcomers may not understand somewhat complex functions like across the first time they try to use it. Still, it is such a game-changer that functions like across exist, the alternatives being you sometimes writing tens of column names, or that you pre-compute a list as I will show it in pandas.
+
+
+Also, you can see how the tidyverse easily interacts with custom functions. The anonymous function gets placed right into the middle of the pipeline without a custom method or any other fancy workaround, and it just builds upon what R offers.
+
+
+One drawback is that your code feels 'old' pretty fast on the tidyverse ecosystem. In this example alone, the |> operator called a pipe, the new anonymous function syntax, the across, and the where functions from the package all have less than two years.
+
+
+The tidyverse can also turn this code written in r, and with only a connection to a data source, compile it into code for another language, it is mainly SQL code, but this is super helpful, as I will show later on what I wished pandas implemented.
+
+
+
+## pandas
+
+
+![pandas](https://miro.medium.com/max/481/1*n_ms1q5YoHAQXXUIfeADKQ.png)
+
+
+I usually think of pandas as a project to copy into Python what worked on other languages, mainly what people call base R and some SQL into Python, and it is hugely successful, and usage is most of the time a joyful experience, it is not the prettiest, but it can get the job done.
+
+pandas is flexible enough to the point where you can write the same code and make it feel like Base R or Tidyverse depending on what methods you choose, for example, if you go heavy into indexing the base R style.
+
+We can read its mission on the [page](https://pandas.pydata.org/about/)
+
+Mission    
+pandas aims to be the fundamental high-level building block for doing practical, real world data analysis in Python. Additionally, it has the broader goal of becoming the most powerful and flexible open source data analysis / manipulation tool available in any language.
+
+
+That is quite a gredy statement, and I love it, pandas should strive for perfection, for power and flexibility, but let's try to see some current limitations and quirks which I dislike
+
+### Set up data
+
+We can easily import the penguins dataset by reading the repository csv.
+
+
+```{python}
+penguins = pd.read_csv('https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv')
+```
+
+
+### Slicing
+
+Using loc, you get very close to base R philosophy.
+
+
+```{python}
+df_result = penguins.loc[penguins.species.isin(['Adelie','Chinstrap']),['species','sex','body_mass_g']]
+
+df_result
+```
+
+But pandas gets ahead of itself and starts changing the data types depending on the parameters, so what started out as a DataFrame may sometimes get back as a Series... You can avoid this behavior by passing lists on this example, this is similar to the data.table way, and it baffles me why this is even a possibility, it overcharges the slicing operations into another capacity of object type manipulators, and that is common in Pandas and data.frame, slicing is this super powerful method that may return wildly different results depending on very little change.
+
+
+```{python}
+df_result = penguins.loc[penguins.species.isin(['Adelie','Chinstrap']),'species']
+
+df_result
+```
+
+### Simple Manipulation
+
+
+Numpy has a super similar syntax to the tidyverse if you opt into it
+
+```{python}
+
+penguins\
+  .query("species in ('Adelie', 'Gentoo')")\
+  .groupby('species')\
+  .agg({'body_mass_g':lambda x: np.mean(x)/1000})
+
+
+# penguins |>
+#   filter(species %in% c('Adelie', 'Gentoo'),
+#          sex == 'female') |> 
+#   group_by(species) |> 
+#   summarise(body_mass_g_to_kg = mean(body_mass_g)/1000)
+# df_full_indexes.columns = ["_".join(col_name).rstrip('_') for col_name in df_full_indexes.columns.to_flat_index()]
+# 
+# df_full_indexes['B_sum']
+# 
+# df_full_indexes['B_mean']
+```
+
+### Complex Manipulations
+
+pandas has this tendency to create more and more indexes, drop_index  will quickly become your go to solution, and when we add hierachical indexes to the mix, you are going to be copying and pasting some solutions from Stack Overflow in order to flatten the data you created or you will need some sophisticated indexing operation to get some specific results back.
+
+Another details is that I need to manually drop the columns before the groupby operation, and this sucks because there is no data type that won't exclude species (our grouping variable) while excluding island and sex 
+
+```{python, error=TRUE}
+penguins\
+  .drop(columns = 'year')\
+  .query("species in ('Adelie', 'Gentoo')")\
+  .groupby('species')\
+  .select_dtypes('numeric')
+```
+```{python}
+result_hierarchical = penguins\
+  .drop(columns = ['year','island','sex'])\
+  .query("species in ('Adelie', 'Gentoo')")\
+  .groupby('species')\
+  .agg([np.mean,np.median])
+
+result_hierarchical
+```
+
+Now in order to access the body_mass_g columns and do a transformation to kg I need to deal with the index system without using the loc method.
+
+```{python}
+result_hierarchical["body_mass_g"] /1000
+```
+So you might just think, OK simple I just need to assign it back
+
+```{python}
+result_hierarchical["body_mass_g"] = result_hierarchical["body_mass_g"] /1000
+```
+
+and it works if you don't mind losing the original data, if you want to create some new name
+
+```{python, error = TRUE}
+result_hierarchical["body_mass_g_back_to_g"] = result_hierarchical["body_mass_g"] * 1000
+```
+
+Infuriating to say the least, you can go on a SO hunt to see the right approach to keep the indexes but at this point I am done with pandas indexing and just cheat my way into the result with some flattened data frame
+
+```{python}
+# Flattern MultiIndex columns
+result_hierarchical.columns = ["_".join(col_name).rstrip('_') for col_name in result_hierarchical.columns.to_flat_index()]
+
+result_hierarchical['body_mass_g_median_back_to_g'] = result_hierarchical['body_mass_g_median'] * 1000
+
+
+result_hierarchical['body_mass_g_median']
+
+result_hierarchical['body_mass_g_median_back_to_g']
+```
+
+## PySpark/Koalas
+
+This framework is delightful to work with especially because you can go back and fourth between 4 apis SQL,Spark,Koalas and Pandas, and chances are one of them has a good approach to your problem, this post would deviate too much if I talked in depth about this framework, but it certainly has it's place on the big data manipulation side, with some apis that are sometimes superior to what pandas can offer, I will touch the issue of laziness on the topic of what I wanted that Pandas implemented, also PySpark really struggles with indexing as it should, and Koalas implements some crazy index rules.
+
+It's vital that you understand that any speed analysis among packages on the individual personal computer level gets turned irrelevant as long as you get access to Spark Clusters, this is how you can query billions of records with ease, not by having slightly faster sorts on a single machine level.
+
+# Grivances with pandas
+
+I classify two kinds of problems on the pandas framework, the first and honestly the simplest to explain are things that it implements and I think it shouldn't a lot were copied from base R and that is why it was important that you understood the timeline of the packages at the beginning of this post, and the second are the new features that dplyr put into the table in recent years, features that when pandas was being created didn't exist and that I hope the pandas or other packages teams will eventually be able to integrate into the Python ecosystem.
+
+
+# What pandas has and it shouldn't
+
+There are many things that are strange to when I have to work in Python the first in that the syntax looks like someone from base r tried to port everthing to Python and unfortunally suceeded... this creates some strange patterns like the whole iloc vs loc vs [[]] debate, they all suck and I firmily believe that 2d manipulation of data was a mistake, a mistake that Python chose to copy.
+
+
+## What pandas hasn't and it should
+## Last updated on {.appendix}
+
+```{r, echo=FALSE}
+Sys.time()
+```
+
+## References {.appendix}
+
+1. Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package
+  version 0.1.0. https://allisonhorst.github.io/palmerpenguins/](https://github.com/allisonhorst/palmerpenguins/

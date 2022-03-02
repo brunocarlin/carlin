@@ -3,7 +3,11 @@ title: "Bruno Testaguzza Carlin blog"
 description: |
   The third version of my personal blog
 output_dir: "_site"
+favicon: data/images/gato.jpg
 navbar:
+  logo:
+    image: data/images/gato.jpg
+    href: https://carlin-blog.netlify.app
   right:
     - text: "Home"
       href: index.html
@@ -15,6 +19,9 @@ navbar:
       href: https://github.com/brunocarlin/carlin
 collections:
   posts:
+    disqus:
+      shortname: carlin-1
+      hidden: true
     share: [twitter, linkedin, pinterest, facebook]
 twitter:
   site: "@BrunoTestaguzza"

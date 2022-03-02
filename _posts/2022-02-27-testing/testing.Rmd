@@ -3,7 +3,6 @@ title: "testing"
 description: |
   A short description of the post.
 creative_commons: CC BY
-compare_updates_url: https://github.com/brunocarlin/carlin/compare/c65d5030f89a3bee40ad0cf8094d584b7a3da43a...main
 author:
   - name: Bruno Testaguzza Carlin
     url: https://twosidesdata.netlify.app/

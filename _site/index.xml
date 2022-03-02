@@ -7,7 +7,16 @@
     <description>The third version of my personal blog
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>pandas Wishes</title>
+      <dc:creator>Bruno Testaguzza Carlin</dc:creator>
+      <link>https://carlin-blog.netlify.app/posts/2022-02-28-pandaswishes</link>
+      <description>Features that I miss in pandas coming from the tidyverse.</description>
+      <guid>https://carlin-blog.netlify.app/posts/2022-02-28-pandaswishes</guid>
+      <pubDate>Mon, 28 Feb 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://rstudio.github.io/distill/images/javascript-d3-preview.png" medium="image" type="image/png"/>
+    </item>
     <item>
       <title>testing</title>
       <dc:creator>Bruno Testaguzza Carlin</dc:creator>
