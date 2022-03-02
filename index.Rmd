@@ -1,5 +1,20 @@
 ---
-title: "Bruno Testaguzza Carlin blog"
+title: "Welcomo to Bruno Testaguzza Carlin blog"
+image: "data/images/gato.jpg"
+links:
+  - label: '<i class="fab fa-github fa-1x"></i>'
+    url: "https://github.com/brunocarlin"
+  - label: '<i class="fab fa-twitter fa-1x"></i>'
+    url: "https://twitter.com/brunotestaguzza"
+  - label: '<i class="fab fa-linkedin-in fa-1x"></i>'
+    url: "https://www.linkedin.com/in/bruno-carlin-451007172/"
 site: distill::distill_website
 listing: posts
 ---
+
+Hi - I’m **Bruno Testaguzza Carlin**. I currently wort at Recovery
+as a Data Science Specialist.
+
+This is my third personal website/blog which contains discussions on topics related to Data Science.
+
+Please browse around, and feel free to leave a comment.
