@@ -15,6 +15,9 @@ navbar:
       href: https://github.com/brunocarlin/carlin
 collections:
   posts:
+    disqus:
+      shortname: carlin-1
+      hidden: true
     share: [twitter, linkedin, pinterest, facebook]
 twitter:
   site: "@BrunoTestaguzza"
