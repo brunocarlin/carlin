@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://carlin-blog.netlify.app/about.html</loc>
-    <lastmod>2022-03-02T11:27:24-03:00</lastmod>
+    <lastmod>2022-03-02T11:50:30-03:00</lastmod>
   </url>
   <url>
     <loc>https://carlin-blog.netlify.app/</loc>
-    <lastmod>2022-03-01T22:27:12-03:00</lastmod>
+    <lastmod>2022-03-02T11:32:12-03:00</lastmod>
   </url>
   <url>
     <loc>https://carlin-blog.netlify.app/README.html</loc>
@@ -14,14 +14,6 @@
   </url>
   <url>
     <loc>https://carlin-blog.netlify.app/posts/2022-02-28-pandaswishes/</loc>
-    <lastmod>2022-03-01T21:50:13-03:00</lastmod>
-  </url>
-  <url>
-    <loc>https://carlin-blog.netlify.app/posts/2022-02-27-testing/</loc>
-    <lastmod>2022-03-01T21:55:50-03:00</lastmod>
-  </url>
-  <url>
-    <loc>https://carlin-blog.netlify.app/posts/2022-02-27-welcome/</loc>
-    <lastmod>2022-02-28T12:23:51-03:00</lastmod>
+    <lastmod>2022-03-02T11:59:56-03:00</lastmod>
   </url>
 </urlset>

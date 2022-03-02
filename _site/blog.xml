@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Bruno Testaguzza Carlin blog</title>
+    <link>https://carlin-blog.netlify.app/</link>
+    <atom:link href="https://carlin-blog.netlify.app/blog.xml" rel="self" type="application/rss+xml"/>
+    <description>The third version of my personal blog
+</description>
+    <image>
+      <title>Bruno Testaguzza Carlin blog</title>
+      <url>https://carlin-blog.netlify.app/data/images/gato.jpg</url>
+      <link>https://carlin-blog.netlify.app/</link>
+    </image>
+    <generator>Distill</generator>
+    <lastBuildDate>Mon, 28 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>pandas Wishes</title>
+      <dc:creator>Bruno Testaguzza Carlin</dc:creator>
+      <link>https://carlin-blog.netlify.app/posts/2022-02-28-pandaswishes</link>
+      <description>Features that I miss in pandas coming from the tidyverse.</description>
+      <category>pandas</category>
+      <category>tidyverse</category>
+      <category>Spark</category>
+      <category>Python</category>
+      <category>R</category>
+      <guid>https://carlin-blog.netlify.app/posts/2022-02-28-pandaswishes</guid>
+      <pubDate>Mon, 28 Feb 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://rstudio.github.io/distill/images/javascript-d3-preview.png" medium="image" type="image/png"/>
+    </item>
+  </channel>
+</rss>
