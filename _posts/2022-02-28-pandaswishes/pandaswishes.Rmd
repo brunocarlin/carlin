@@ -502,7 +502,7 @@ I classify two kinds of problems on the pandas framework, the first and honestly
 
 # What pandas has and it shouldn't
 
-There are many things that are strange to when I have to work in Python the first in that the syntax looks like someone from base r tried to port everthing to Python and unfortunally suceeded... this creates some strange patterns like the whole iloc vs loc vs [[]] debate, they all suck and I firmily believe that 2d manipulation of data was a mistake, a mistake that Python chose to copy.
+There are many things that are strange to when I have to work in Python the first in that the syntax looks like someone from base r tried to port everything to Python and unfortunately suceeded... this creates some strange patterns like the whole iloc vs loc vs [[]] debate, they all suck and I firmly believe that 2d manipulation of data was a mistake, a mistake that Python chose to copy.
 
 
 ## What pandas hasn't and it should
