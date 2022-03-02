@@ -7,10 +7,31 @@ links:
   - label: '<i class="fab fa-twitter fa-1x"></i>'
     url: "https://twitter.com/brunotestaguzza"
   - label: '<i class="fab fa-linkedin-in fa-1x"></i>'
-    url: "https://www.linkedin.com/in/bruno-carlin-451007172/"
+    url: "https://www.linkedin.com/in/bruno-carlin/"
 site: distill::distill_website
-listing: posts
+output:
+  postcards::jolla
 ---
+
+
+
+```{r, include=FALSE, results='asis'}
+library(metathis)
+library(tidyverse)
+metathis::meta() %>%
+  metathis::meta_social(
+    title = "Bruno Testaguzza Carlin",
+    description = "Carlin's site/blog. Posts on Data Science",
+    url = "https://carlin-blog.netlify.app",
+    image = "data/images/gato.jpg",
+    image_alt = "Profile picture of the blog",
+    og_type = "website",
+    og_author = "Bruno Testaguzza Carlin",
+    twitter_card_type = "summary",
+    twitter_creator = "@brunotestaguzza"
+  )`
+```
+
 
 Hi - I’m **Bruno Testaguzza Carlin**. I currently wort at Recovery
 as a Data Science Specialist.
