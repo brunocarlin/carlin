@@ -6,27 +6,27 @@
       "description": "The blog started on February 2022",
       "author": [],
       "contents": "\nI also have another personal website at TwoSidesData.\nIf you want to reach out please message me on linkedin or twitter.\n\n\n\n",
-      "last_modified": "2022-03-02T16:14:36+00:00"
+      "last_modified": "2022-03-02T16:31:39+00:00"
     },
     {
       "path": "blog.html",
       "title": "Blog Posts",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-03-02T16:14:36+00:00"
+      "last_modified": "2022-03-02T16:31:42+00:00"
     },
     {
       "path": "index.html",
       "title": "Welcome to Bruno Testaguzza Carlin blog",
       "author": [],
       "contents": "\n\n          \n          \n          \n          \n          Bruno Testaguzza Carlin blog\n          \n          \n          \n          \n          \n          Blog\n          About\n          \n          \n          \n          \n          \n          \n          \n          \n          \n          ☰\n          \n          \n      \n        \n          \n            Welcome to Bruno Testaguzza Carlin blog\n          \n          \n            \n              Hi - I’m Bruno Testaguzza Carlin. I currently wort at Recovery as a Data Science Specialist.\n              This is my third personal website/blog which contains discussions on topics related to Data Science.\n              Please browse around, and feel free to leave a comment.\n            \n            \n              Hi - I’m Bruno Testaguzza Carlin. I currently wort at Recovery as a Data Science Specialist.\n              This is my third personal website/blog which contains discussions on topics related to Data Science.\n              Please browse around, and feel free to leave a comment.\n            \n          \n\n          \n            \n              \n                  \n                    \n                      \n                    \n                  \n                \n                                \n                  \n                    \n                      \n                    \n                  \n                \n                                \n                  \n                    \n                      \n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    \n                  \n                \n                                \n                  \n                    \n                  \n                \n                                \n                  \n                    \n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2022-03-02T16:14:39+00:00"
+      "last_modified": "2022-03-02T16:31:46+00:00"
     },
     {
       "path": "README.html",
       "author": [],
       "contents": "\ncarlin\n\nPersonal Blog of Bruno Testaguzza Carlin\n\n\n",
-      "last_modified": "2022-03-02T16:14:39+00:00"
+      "last_modified": "2022-03-02T16:31:49+00:00"
     }
   ],
   "collections": ["posts/posts.json"]
