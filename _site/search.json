@@ -5,28 +5,28 @@
       "title": "About this blog",
       "description": "The blog started on February 2022",
       "author": [],
-      "contents": "\r\nI also have another personal website at TwoSidesData.\r\nIf you want to reach out please message me on linkedin or twitter.\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-03-03T00:16:10-03:00"
+      "contents": "\nI also have another personal website at TwoSidesData.\nIf you want to reach out please message me on linkedin or twitter.\n\n\n\n",
+      "last_modified": "2022-03-03T04:52:55+00:00"
     },
     {
       "path": "blog.html",
       "title": "Blog Posts",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-03-03T00:16:10-03:00"
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-03-03T04:52:56+00:00"
     },
     {
       "path": "index.html",
       "title": "Welcome to Bruno Testaguzza Carlin blog",
       "author": [],
-      "contents": "\r\n\r\n          \r\n          \r\n          \r\n          \r\n          Bruno Testaguzza Carlin blog\r\n          \r\n          \r\n          \r\n          \r\n          \r\n          Blog\r\n          About\r\n          \r\n          \r\n          \r\n          \r\n          \r\n          \r\n          \r\n          \r\n          \r\n          ☰\r\n          \r\n          \r\n      \r\n        \r\n          \r\n            Welcome to Bruno Testaguzza Carlin blog\r\n          \r\n          \r\n            \r\n              Hi - I’m Bruno Testaguzza Carlin. I\r\n              currently wort at Recovery as a Data Science\r\n              Specialist.\r\n              This is my third personal website/blog which contains\r\n              discussions on topics related to Data Science.\r\n              Please browse around, and feel free to leave a\r\n              comment.\r\n            \r\n            \r\n              Hi - I’m Bruno Testaguzza Carlin. I\r\n              currently wort at Recovery as a Data Science\r\n              Specialist.\r\n              This is my third personal website/blog which contains\r\n              discussions on topics related to Data Science.\r\n              Please browse around, and feel free to leave a\r\n              comment.\r\n            \r\n          \r\n\r\n          \r\n            \r\n              \r\n                  \r\n                    \r\n                      \r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                      \r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                      \r\n                    \r\n                  \r\n                \r\n                              \r\n          \r\n\r\n          \r\n            \r\n              \r\n                                \r\n                  \r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                  \r\n                \r\n                              \r\n            \r\n          \r\n        \r\n      \r\n    \r\n\r\n    \r\n    \r\n    ",
-      "last_modified": "2022-03-03T00:16:10-03:00"
+      "contents": "\n\n          \n          \n          \n          \n          Bruno Testaguzza Carlin blog\n          \n          \n          \n          \n          \n          Blog\n          About\n          \n          \n          \n          \n          \n          \n          \n          \n          \n          ☰\n          \n          \n      \n        \n          \n            Welcome to Bruno Testaguzza Carlin blog\n          \n          \n            \n              Hi - I’m Bruno Testaguzza Carlin. I currently wort at Recovery as a Data Science Specialist.\n              This is my third personal website/blog which contains discussions on topics related to Data Science.\n              Please browse around, and feel free to leave a comment.\n            \n            \n              Hi - I’m Bruno Testaguzza Carlin. I currently wort at Recovery as a Data Science Specialist.\n              This is my third personal website/blog which contains discussions on topics related to Data Science.\n              Please browse around, and feel free to leave a comment.\n            \n          \n\n          \n            \n              \n                  \n                    \n                      \n                    \n                  \n                \n                                \n                  \n                    \n                      \n                    \n                  \n                \n                                \n                  \n                    \n                      \n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    \n                  \n                \n                                \n                  \n                    \n                  \n                \n                                \n                  \n                    \n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2022-03-03T04:52:56+00:00"
     },
     {
       "path": "README.html",
       "author": [],
-      "contents": "\r\ncarlin\r\n\r\nPersonal Blog of Bruno Testaguzza Carlin\r\n\r\n\r\n",
-      "last_modified": "2022-03-03T00:16:10-03:00"
+      "contents": "\ncarlin\n\nPersonal Blog of Bruno Testaguzza Carlin\n\n\n",
+      "last_modified": "2022-03-03T04:52:56+00:00"
     }
   ],
   "collections": ["posts/posts.json"]
