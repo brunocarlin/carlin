@@ -20,14 +20,44 @@ output:
     toc: true
     toc_float: true
 ---
-```{r setup, include=FALSE}
+
+<!-- TOC JAVASCRIPT ELEMENTS -->
+<script>
+function toggle () {
+  document.getElementById("TOC").classList.toggle("hide");
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      if (entry.intersectionRatio > 0) {
+        document.querySelector(`[href="#${id}"]`).parentElement.classList.add('active');
+      } else {
+        document.querySelector(`[href="#${id}"]`).parentElement.classList.remove('active');
+      }
+    });
+  });
+
+  // Track all headings that have an `id` applied
+  document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').forEach((h1, h2, h3, h4, h5, h6) => {
+    observer.observe(h1, h2, h3, h4, h5, h6);
+  });
+  
+});
+</script>
+
+
+<!-- TOC HTML ELEMENTS -->
+<input type="button" class="d-article-with-toc" id="TOC" value="&#x2630" title="Toggle (Hide/Show) Table of Contents" alt="Toggle button for hiding/showing the Table of Contents" onclick="toggle()" style="padding:7px; border: 0px;"/>
+
+# Setup
+
+```{r setup, include=FALSE} 
 #knitr::opts_chunk$set(echo = FALSE)
 knitr::knit_engines$set(python = reticulate::eng_python)
 ```
-
-
-
-# Setup
 
 
 ## Link to the GitHub source code
@@ -41,6 +71,8 @@ downloadthis::download_link(
   self_contained = FALSE
 )
 ```
+
+
 
 ## Libraries in R
 
@@ -201,11 +233,36 @@ There are many other examples, but I think of pandas as this central player on t
 # The current landscape
 
 In R, I have used three different frameworks when dealing with data that can be considered a problem. Still, there is a crucial difference when comparing Python and R, you will usually find competition inside R, and it happens on every sphere, modeling has the tidymodels vs. mlr fight, visualization has plotly vs. ggplot2, statistical tests sometimes have tens of different implementations from all over the world, etc. As an economist, I see this competition with good eyes. The competition has fostered fast and tested change on multiple instances as competing 
+
 ## The timeline
 
-First there was Base R created on August 1993; 28 years ago according to Wikipedia, but with many more years of baggage from the S era. 
+
+I am using the dates from pip and cran but most packages get released earlier on mailing lists or private repos
+
+```{r echo=FALSE}
+data_packages <- tibble::tribble(
+                         ~group,     ~version,       ~start,         ~end,   ~color,   ~letter,
+                       "pandas",         "<1", "2009-12-25", "2020-01-30", "d10682", "#FFFFFF",
+                       "pandas",         ">1", "2020-01-30", "2022-03-01", "130654", "#FFFFFF",
+                        "dplyr",         "<1", "2014-01-29", "2020-05-29", "ffb851", "#FFFFFF",
+                        "dplyr",         ">1", "2020-05-29", "2022-03-01", "6cb3e0", "#FFFFFF",
+                   "data.table",         ">1", "2006-04-15", "2022-03-01", "ffff4d", "#000000",
+                       "Base R",          "0", "1997-04-01", "2000-02-29", "EFF3FF", "#FFFFFF",
+                       "Base R",          "1", "2000-02-29", "2004-10-04", "BDD7E7", "#FFFFFF",
+                       "Base R",          "2", "2004-10-04", "2013-04-03", "6BAED6", "#FFFFFF",
+                       "Base R",          "3", "2013-04-03", "2020-04-24", "3182BD", "#FFFFFF",
+                       "Base R",          "4", "2020-04-24", "2022-03-01", "08519C", "#FFFFFF",
+                        "Spark",     "Koalas", "2019-04-19", "2021-10-18", "a34316", "#3a383d",
+                        "Spark", "api", "2021-10-18", "2022-03-01", "d7591e", "#3a383d"
+                   )
+
+vistime::vistime(data_packages,col.event = 'version',col.group = 'group',col.fontcolor = 'letter')
+```
+
+
+First there was Base R created on August the late 90s, but with many more years of baggage from the S era.   
 Then pandas starts development around 2005 and gets open sourced on 2008, it is a game changer and vastly more declarative and faster than Base R.
-data.table comes along on the premise of speed matters a lot, remember that it is 2006 and the single big machine paradigm was the end all for big data analysis, maybe it wasn't even called big data back then. 
+data.table comes along on the premise of speed matters a lot, remember that it is 2006 and the single big machine paradigm was the end all for big data analysis, maybe it wasn't even called big data back then.  
 the tidyverse releases dplyr on the back of the huge success of ggplot2, it wasn't even called the tidyverse back then.
 And finally Koalas get created on 2019 to help pandas scale with PySpark, it eventually get incorporated back into PySpark as the pyspark.pandas api.
 
@@ -448,6 +505,8 @@ penguins\
   .groupby('species')\
   .select_dtypes('numeric')
 ```
+
+
 ```{python}
 result_hierarchical = penguins\
   .drop(columns = ['year','island','sex'])\
@@ -493,19 +552,102 @@ result_hierarchical['body_mass_g_median_back_to_g']
 
 This framework is delightful to work with especially because you can go back and fourth between 4 apis SQL,Spark,Koalas and Pandas, and chances are one of them has a good approach to your problem, this post would deviate too much if I talked in depth about this framework, but it certainly has it's place on the big data manipulation side, with some apis that are sometimes superior to what pandas can offer, I will touch the issue of laziness on the topic of what I wanted that Pandas implemented, also PySpark really struggles with indexing as it should, and Koalas implements some crazy index rules.
 
-It's vital that you understand that any speed analysis among packages on the individual personal computer level gets turned irrelevant as long as you get access to Spark Clusters, this is how you can query billions of records with ease, not by having slightly faster sorts on a single machine level.
+It's vital that you understand that any speed analysis among packages on the individual personal computer level gets turned irrelevant as long as you get access to Spark Clusters, this is how you can query billions of records with ease, not by having slightly faster performance on a single machine level but by leveraging the horizontal scaling capacity of big companies such as Amazon, Google and Microsoft.
 
-# Grivances with pandas
+# Problems with pandas
 
-I classify two kinds of problems on the pandas framework, the first and honestly the simplest to explain are things that it implements and I think it shouldn't a lot were copied from base R and that is why it was important that you understood the timeline of the packages at the beginning of this post, and the second are the new features that dplyr put into the table in recent years, features that when pandas was being created didn't exist and that I hope the pandas or other packages teams will eventually be able to integrate into the Python ecosystem.
+I classify two kinds of problems on the pandas framework, the first and honestly the simplest to explain are things that it implements and I think it shouldn't a lot were copied from base R and that is why it was important that you understood the timeline of the packages at the beginning of this post, and the second are the new features that recent packages on both the R and Python sphere put into the table in recent years, features that when pandas was being created didn't exist and that I hope the pandas or some other packages teams will eventually be able to integrate into the pandas ecosystem.
+
+## What pandas has and it shouldn't
+
+Here are the things that I hope that pandas makes easier to get away from or ditches altogether.
 
 
-# What pandas has and it shouldn't
+### Indexing
 
-There are many things that are strange to when I have to work in Python the first in that the syntax looks like someone from base r tried to port everything to Python and unfortunately suceeded... this creates some strange patterns like the whole iloc vs loc vs [[]] debate, they all suck and I firmly believe that 2d manipulation of data was a mistake, a mistake that Python chose to copy.
+This wasn't even a feature back in the sql days, indexing comes from languages that tried to facilitate the well Index of data, so you could play a version of Battleship on your data, the idea sounds good, and it works for mostly simply indexes, data[x,y] if you can picture it, and even the index of rows what R call row.names is in my opinion a mistake, it adds unecessary flutter to what could have been easily one more column, so you can define all datasets or at least all structured datasets ass the tidy diagram shows
 
+![hadley tidy diagram](https://www.openscapes.org/img/blog/tidydata/tidydata_1.jpg)
+
+The id column on this example is treated as just one more column, it doesn't need any special treatment as we will discuss on Slicing.
+
+#### MultiIndex
+
+This is the worst of the bunch, if data[x,y] is discussable and maybe human readable, or excel friendly as I like to call it, MultiIndex is the epitome of unnecessary structure, it burden's you with a new more complex data type than the one that you started, it is hardly an easy feature on a usability standpoint as multiple SO threads will show, it causes confusion, generates code to get back into a flatter structure, it only exists on pandas and copycats, and for good reason, this format is impossible to translate into our common file structures such as csv or xlsx, it can't be passed back into a sql server or Spark, it is too much for what could have been a flatter structure with more names, or a nested return dataframe.
+
+
+#### The Solution
+
+There are two types of functions that suffer on a practical/usubility standpoint because of the Index concept
+
+
+The first are the functions that just don't work out of the box because of Indexing, I am talking about not even talking about functions that have bad names or arguments because of indexing like the sort_values, not sort because god forbid sort messed up with the index and you didn't realize it, the biggest issue comes from functions that almost always come accopanied by reset_index() or have some internal argument to ignore_index like concat.
+
+```{python}
+df1 = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],
+                    'D': ['D0', 'D1', 'D2', 'D3']},
+                    index=[0, 2, 3,4])
+
+df2 = pd.DataFrame({'A2': ['A4', 'A5', 'A6', 'A7'],
+                    'D2': ['D4', 'D5', 'D6', 'D7']},
+                    index=[ 5, 6, 7,3])
+```
+
+
+How is this the default behaviour
+
+```{python}
+pd.concat([df1,df2],axis =1)
+```
+
+instead of this
+
+```{python}
+pd.concat([df1.reset_index(),df2.reset_index()],axis =1)
+```
+
+Maybe I am expecting too much from concat and there should be another method to do what the tidyverse calls bind_cols an operation where you combine two dfs with the same number of rows, but still where is this magical function? It can't possibly exist under the current Index dominated philosophy because as show the Index is about to be completely ignored in order for it to work how I wanted it to
+
+
+####
+
+The solution
+
+
+
+The second are the ones that give you back a deeper more nested index than what you started with, my solution is to provide functions that always return a dataframes with the same flatness level as how they got in, either with named returns like how dplyr does across using the nicknames .col and .fun or with nested data instead of nested indexes, these functions can still rely on Indexes on the back-end, but on a higher level let the user decide how to handle naming or if he wants a nested return.
+
+```{python}
+def agg_no_index(df,arg_to_agg):
+  df = df\
+  .agg(arg_to_agg)
+  
+  df.columns = ["_".join(col_name).rstrip('_') for col_name in df.columns.to_flat_index()]
+  return(df)
+```
+
+```{python}
+penguins\
+  .drop(columns = ['year','island','sex'])\
+  .query("species in ('Adelie', 'Gentoo')")\
+  .groupby('species')\
+  .pipe(agg_no_index,arg_to_agg = [np.sum,np.mean])
+
+```
+
+### Slicing
+
+These were a low target slicing suffers from the sins of indexing but it is chaos incarnate here are 4 different valid approaches to the same thing
+
+
+
+, but this is a superfulos feature that can totally circunvented by two kinds of operations you **select** to get you y and you **where/filter/query** to get x that is
 
 ## What pandas hasn't and it should
+
+
+This example is also useful to prove my point on how hard it is to extend pandas on a user level, you would need to inherit the object in order to create your own pandas method to solve the multi index issue, there should be an easier way to just pass a function that creates a pandas method something like df.apply_method(my_new_function) so that you don't need to break the nice chaning of operations, pipe attempts to do this but it doesn't always works as expected
+
 ## Last updated on {.appendix}
 
 ```{r, echo=FALSE}
