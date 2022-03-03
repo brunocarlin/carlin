@@ -18,7 +18,7 @@ navbar:
     - icon: fa fa-linkedin
       href: https://www.linkedin.com/in/bruno-carlin/
     - icon: fa fa-rss
-      href: index.xml
+      href: blog.xml
     - icon: fa-brands fa-github
       href: https://github.com/brunocarlin/carlin
 collections:

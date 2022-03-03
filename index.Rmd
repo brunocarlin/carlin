@@ -17,8 +17,7 @@ output:
 
 ```{r, include=FALSE, results='asis'}
 library(metathis)
-library(tidyverse)
-metathis::meta() %>%
+metathis::meta()  |> 
   metathis::meta_social(
     title = "Bruno Testaguzza Carlin",
     description = "Carlin's site/blog. Posts on Data Science",
