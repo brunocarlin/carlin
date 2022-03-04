@@ -8,4 +8,4 @@
 <!-- badges: end -->
 
 
-Personal Blog of Bruno Testaguzza Carlin
+Personal Blog of Bruno Testaguzza Carlin: https://carlin-blog.netlify.app/
