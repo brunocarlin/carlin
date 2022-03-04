@@ -2051,19 +2051,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script src="https://giscus.app/client.js"
-          data-repo="brunocarlin/carlin"
-          data-repo-id="R_kgDOG6xc7w"
-          data-category="[ENTER CATEGORY NAME HERE]"
-          data-category-id="[ENTER CATEGORY ID HERE]"
-          data-mapping="pathname"
-          data-reactions-enabled="1"
-          data-emit-metadata="1"
-          data-input-position="top"
-          data-theme="light"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!/posts/.test(location.pathname)) {
+        return;
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://giscus.app/client.js";
+      script.setAttribute("data-repo", "brunocarlin/carlin");
+      script.setAttribute("data-repo-id", "R_kgDOG6xc7w");
+      script.setAttribute("data-category", "General");
+      script.setAttribute("data-category-id", "DIC_kwDOG6xc784CN8VD");
+      script.setAttribute("data-mapping", "pathname");
+      script.setAttribute("data-reactions-enabled", "1");
+      script.setAttribute("data-emit-metadata", "1");
+      script.setAttribute("data-input-position", "top");
+      script.setAttribute("data-theme", "light");
+      script.setAttribute("data-lang", "en");
+      script.setAttribute("crossorigin", "anonymous");
+
+      /* wait for article to load, append script to article element */
+      var observer = new MutationObserver(function (mutations, observer) {
+        var article = document.querySelector("d-article");
+        if (article) {
+          observer.disconnect();
+          /* HACK: article scroll */
+          article.setAttribute("style", "overflow-y: hidden");
+          article.appendChild(script);
+        }
+      });
+
+      observer.observe(document.body, { childList: true });
+    });
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2121,13 +2141,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
-<p>I also have another personal website at <a
-href="https://twosidesdata.netlify.app/">TwoSidesData</a>.</p>
-<p>If you want to reach out please message me on <a
-href="https://www.linkedin.com/in/bruno-carlin/">linkedin</a> or <a
-href="https://twitter.com/brunotestaguzza">twitter</a>.</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>I also have another personal website at <a href="https://twosidesdata.netlify.app/">TwoSidesData</a>.</p>
+<p>If you want to reach out please message me on <a href="https://www.linkedin.com/in/bruno-carlin/">linkedin</a> or <a href="https://twitter.com/brunotestaguzza">twitter</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
