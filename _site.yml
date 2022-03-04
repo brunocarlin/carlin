@@ -33,5 +33,8 @@ twitter:
 base_url: https://carlin-blog.netlify.app/
 repository_url: https://github.com/brunocarlin/carlin
 source_url: true
-output: distill::distill_article
 creative_commons: CC BY
+output:
+  distill::distill_article:
+    includes:
+      in_header: html/giscus.html
