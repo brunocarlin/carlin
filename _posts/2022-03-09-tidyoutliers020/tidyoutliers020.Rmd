@@ -1,0 +1,46 @@
+---
+title: "tidy.outliers version 0.2.0 released"
+description: |
+  The tidy.outliers package now has 5 ways  of scoring outliers on your data!
+categories:
+  - tidymodels
+  - R
+author:
+  - name: Bruno Testaguzza Carlin
+    url: https://twosidesdata.netlify.app/
+preview: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDvE-FcZtiyIvEPBjf_UGXqeEOXh-iVx2K3g&usqp=CAU
+date: 2022-03-09
+output:
+  distill::distill_article:
+    self_contained: true
+---
+
+# What is tidy outliers?
+
+tidy.outliers is a pet project of mine born out of a project when I saw a coworker manually implement an outlier detection algorithm and wondered if tidy.models had an easy way to do it.
+
+I knew that scikit had up to 5 established ways of detecting outliers and even a [great page talking about outlier removal](https://scikit-learn.org/stable/modules/outlier_detection.html)!
+
+This situation left me wondering why no one had written something similar for the incredible tidymodels ecosystem. So I decided to do it myself.
+
+# What v 0.2.0 adds?
+
+## Univariate methods
+
+I have added a method for users to pass a function to outlier steps, so now if you can have your custom univariate based rules to score outliers,  using [step_outliers_univariate](https://brunocarlin.github.io/tidy.outliers/reference/step_outliers_univariate.html)
+
+
+## h2o integration
+
+With the new step [step_outliers_h2o.extendedIsolationForest], you can read more about the function on their document page [here](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/eif.html) 
+
+## outForest method
+
+The new [step_outliers_outForest](https://brunocarlin.github.io/tidy.outliers/reference/step_outliers_outForest.html) uses the main function from the package, you can read more about it [here](https://github.com/mayer79/outForest).
+
+
+# Improvements to CI/CD
+
+The package reached 100% test coverage, and it currently passes four out of five setups for a possible cran release. I even posted my first video covering it. [here](https://www.youtube.com/watch?v=U_Ahxcq_6Sk)
+
+I also upgraded the package to the v2 action framework of the rstudio team, and you can read more about it [here](https://github.com/r-lib/actions)

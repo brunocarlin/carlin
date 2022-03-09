@@ -12,7 +12,18 @@
       <link>https://carlin-blog.netlify.app/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 28 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>tidy.outliers version 0.2.0 released</title>
+      <dc:creator>Bruno Testaguzza Carlin</dc:creator>
+      <link>https://carlin-blog.netlify.app/posts/2022-03-09-tidyoutliers020</link>
+      <description>The tidy.outliers package now has 5 ways  of scoring outliers on your data!</description>
+      <category>tidymodels</category>
+      <category>R</category>
+      <guid>https://carlin-blog.netlify.app/posts/2022-03-09-tidyoutliers020</guid>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDvE-FcZtiyIvEPBjf_UGXqeEOXh-iVx2K3g&amp;usqp=CAU" medium="image" type="text/plain"/>
+    </item>
     <item>
       <title>pandas Wishes</title>
       <dc:creator>Bruno Testaguzza Carlin</dc:creator>
