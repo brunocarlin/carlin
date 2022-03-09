@@ -84,3 +84,5 @@ The new [step_outliers_outForest](https://brunocarlin.github.io/tidy.outliers/re
 The package reached 100% test coverage, and it currently passes four out of five setups for a possible cran release. I even posted my first video covering it. [here](https://www.youtube.com/watch?v=U_Ahxcq_6Sk)
 
 I also upgraded the package to the v2 action framework of the rstudio team, and you can read more about it [here](https://github.com/r-lib/actions)
+```{.r .distill-force-highlighting-css}
+```

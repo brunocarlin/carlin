@@ -112,7 +112,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","categories","author","preview","date","output"]}},"value":[{"type":"character","attributes":{},"value":["tidy.outliers version 0.2.0 released"]},{"type":"character","attributes":{},"value":["The tidy.outliers package now has 5 ways  of scoring outliers on your data!\n"]},{"type":"character","attributes":{},"value":["tidymodels","R"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Bruno Testaguzza Carlin"]},{"type":"character","attributes":{},"value":["https://twosidesdata.netlify.app/"]}]}]},{"type":"character","attributes":{},"value":["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDvE-FcZtiyIvEPBjf_UGXqeEOXh-iVx2K3g&usqp=CAU"]},{"type":"character","attributes":{},"value":["2022-03-09"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","categories","author","preview","date","css","output"]}},"value":[{"type":"character","attributes":{},"value":["tidy.outliers version 0.2.0 released"]},{"type":"character","attributes":{},"value":["The tidy.outliers package now has 5 ways  of scoring outliers on your data!\n"]},{"type":"character","attributes":{},"value":["tidymodels","R"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Bruno Testaguzza Carlin"]},{"type":"character","attributes":{},"value":["https://twosidesdata.netlify.app/"]}]}]},{"type":"character","attributes":{},"value":["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDvE-FcZtiyIvEPBjf_UGXqeEOXh-iVx2K3g&usqp=CAU"]},{"type":"character","attributes":{},"value":["2022-03-09"]},{"type":"character","attributes":{},"value":["../../css/hover.css"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["keep_md","toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2466,6 +2466,7 @@ distill-header .nav a {
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
+  <style type="text/css">d-article {contain: none;}.d-contents nav h3 {text-indent: 25px;}.d-contents nav ul li.active > a { font-weight: bold; color: #0f2e3d !important;}.d-contents nav a {transition: all 0.1s ease-in-out;}#TOC {opacity: 1;position: fixed;left: calc(7%);top: calc(5.5%);max-width: 260px;max-height: 85%;overflow-y: auto;background: white; backdrop-filter: blur(10px); padding: 10px; border: 1px solid rgba(0, 0, 0, 0.1);transition: all 0.5s; z-index: 999;}#TOC.hide { opacity: 0;transition: visibility 0s linear 0.5s, opacity 0.5s;}#TOC:hover {opacity: 1;transition: all 0.5s;}@media screen and (max-width: 1600px) {#TOC {position: relative;left: 0;top: 0;max-width: none;max-height: none;overflow-y: auto;border: none;background: none; }.d-contents nav h3 {text-indent: 0; }input[type="button" i] { display: none; }}</style>
 
 </head>
 
@@ -2502,7 +2503,50 @@ your data!</p></p>
 </div>
 
 <div class="d-article">
-<h1 id="what-is-tidy-outliers">What is tidy outliers?</h1>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#what-is-tidy.outliers">What is tidy.outliers?</a></li>
+<li><a href="#what-v-0.2.0-adds">What v 0.2.0 adds?</a>
+<ul>
+<li><a href="#univariate-methods">Univariate methods</a></li>
+<li><a href="#h2o-integration">h2o integration</a></li>
+<li><a href="#outforest-method">outForest method</a></li>
+</ul></li>
+<li><a href="#improvements-to-cicd">Improvements to CI/CD</a></li>
+</ul>
+</nav>
+</div>
+<!-- TOC JAVASCRIPT ELEMENTS -->
+<script>
+function toggle () {
+  document.getElementById("TOC").classList.toggle("hide");
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      if (entry.intersectionRatio > 0) {
+        document.querySelector(`[href="#${id}"]`).parentElement.classList.add('active');
+      } else {
+        document.querySelector(`[href="#${id}"]`).parentElement.classList.remove('active');
+      }
+    });
+  });
+
+  // Track all headings that have an `id` applied
+  document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').forEach((h1, h2, h3, h4, h5, h6) => {
+    observer.observe(h1, h2, h3, h4, h5, h6);
+  });
+  
+});
+</script>
+<!-- TOC HTML ELEMENTS -->
+<p><input type="button" class="d-article-with-toc" id="TOC" value="☰" title="Toggle (Hide/Show) Table of Contents" alt="Toggle button for hiding/showing the Table of Contents" onclick="toggle()" style="padding:7px; border: 0px;"></input></p>
+<h1 id="what-is-tidy.outliers">What is tidy.outliers?</h1>
 <p>tidy.outliers is a pet project of mine born out of a project when I
 saw a coworker manually implement an outlier detection algorithm and
 wondered if tidy.models had an easy way to do it.</p>
