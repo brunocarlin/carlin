@@ -1,5 +1,25 @@
 [
   {
+    "path": "posts/2022-03-09-tidyoutliers020/",
+    "title": "tidy.outliers version 0.2.0 released",
+    "description": "The tidy.outliers package now has 5 ways  of scoring outliers on your data!",
+    "author": [
+      {
+        "name": "Bruno Testaguzza Carlin",
+        "url": "https://twosidesdata.netlify.app/"
+      }
+    ],
+    "date": "2022-03-09",
+    "categories": [
+      "tidymodels",
+      "R"
+    ],
+    "contents": "\r\n\r\nContents\r\nWhat is tidy.outliers?\r\nWhat v 0.2.0 adds?\r\nUnivariate methods\r\nh2o integration\r\noutForest method\r\n\r\nImprovements to CI/CD\r\n\r\n\r\n\r\nfunction toggle () {\r\n  document.getElementById(\"TOC\").classList.toggle(\"hide\");\r\n};\r\n\r\nwindow.addEventListener('DOMContentLoaded', () => {\r\n\r\n  const observer = new IntersectionObserver(entries => {\r\n    entries.forEach(entry => {\r\n      const id = entry.target.getAttribute('id');\r\n      if (entry.intersectionRatio > 0) {\r\n        document.querySelector(`[href=\"#${id}\"]`).parentElement.classList.add('active');\r\n      } else {\r\n        document.querySelector(`[href=\"#${id}\"]`).parentElement.classList.remove('active');\r\n      }\r\n    });\r\n  });\r\n\r\n  // Track all headings that have an `id` applied\r\n  document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').forEach((h1, h2, h3, h4, h5, h6) => {\r\n    observer.observe(h1, h2, h3, h4, h5, h6);\r\n  });\r\n  \r\n});\r\n\r\nWhat is tidy.outliers?\r\ntidy.outliers is a pet project of mine born out of a project when I\r\nsaw a coworker manually implement an outlier detection algorithm and\r\nwondered if tidy.models had an easy way to do it.\r\nI knew that scikit had up to 5 established ways of detecting outliers\r\nand even a great\r\npage talking about outlier removal!\r\nThis situation left me wondering why no one had written something\r\nsimilar for the incredible tidymodels ecosystem. So I decided to do it\r\nmyself.\r\nWhat v 0.2.0 adds?\r\nUnivariate methods\r\nI have added a method for users to pass a function to outlier steps,\r\nso now if you can have your custom univariate based rules to score\r\noutliers, using step_outliers_univariate\r\nh2o integration\r\nWith the new step [step_outliers_h2o.extendedIsolationForest], you\r\ncan read more about the function on their document page here\r\noutForest method\r\nThe new step_outliers_outForest\r\nuses the main function from the package, you can read more about it here.\r\nImprovements to CI/CD\r\nThe package reached 100% test coverage, and it currently passes four\r\nout of five setups for a possible cran release. I even posted my first\r\nvideo covering it. here\r\nI also upgraded the package to the v2 action framework of the rstudio\r\nteam, and you can read more about it here\r\n\r\n\r\n\r\n",
+    "preview": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDvE-FcZtiyIvEPBjf_UGXqeEOXh-iVx2K3g&usqp=CAU",
+    "last_modified": "2022-03-09T19:42:55-03:00",
+    "input_file": "tidyoutliers020.knit.md"
+  },
+  {
     "path": "posts/2022-02-28-pandaswishes/",
     "title": "pandas Wishes",
     "description": "Features that I miss in pandas coming from the tidyverse.",
