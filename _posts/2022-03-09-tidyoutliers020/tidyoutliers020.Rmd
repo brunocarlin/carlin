@@ -12,7 +12,9 @@ preview: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDvE-FcZtiyIvEPBj
 date: 2022-03-09
 output:
   distill::distill_article:
-    self_contained: true
+    keep_md: true
+    toc: true
+    toc_float: true
 ---
 
 # What is tidy outliers?
